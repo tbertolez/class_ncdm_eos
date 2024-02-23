@@ -471,6 +471,8 @@ struct perturbations_vector
   int index_pt_theta_idm; /**< idm velocity */
   int index_pt_delta_dcdm; /**< dcdm density */
   int index_pt_theta_dcdm; /**< dcdm velocity */
+  int index_pt_delta_ncdm1;
+  int index_pt_theta_ncdm1;
   int index_pt_delta_fld;  /**< dark energy density in true fluid case */
   int index_pt_theta_fld;  /**< dark energy velocity in true fluid case */
   int index_pt_Gamma_fld;  /**< unique dark energy dynamical variable in PPF case */
@@ -968,6 +970,21 @@ extern "C" {
                                             struct perturbations_workspace * ppw,
                                             ErrorMsg error_message
                                             );
+
+
+  int sound_speed_ncdm_from_tower(struct perturbations_workspace * ppw,
+                                  struct background * pba, 
+                                  double * y,
+                                  double * delta_rho,
+                                  double * delta_p,
+                                  double * c_s2);
+
+
+  int shear_ncdm_from_tower(struct perturbations_workspace *ppw,
+                            struct background *pba, 
+                            double * y,
+                            double * shear);
+
 
 #ifdef __cplusplus
 }
