@@ -9578,7 +9578,7 @@ int perturbations_derivs(double tau,
 
           // IF WE WANT TO USE THE deltaP FORMULATION
           // First define the derivative of the w
-          w_prime_ncdm = a_prime_over_a*w_ncdm*((2.-3.*w_ncdm)-pseudo_p_ncdm/p_ncdm_bg);
+          w_prime_ncdm = -a_prime_over_a*w_ncdm*((2.-3.*w_ncdm)-pseudo_p_ncdm/p_ncdm_bg);
 
           dy[pv->index_pt_delta_ncdm1+n_ncdm]  = -(1.0+w_ncdm)*(theta_ncdm + metric_continuity);
           dy[pv->index_pt_delta_ncdm1+n_ncdm] += +3.0*a_prime_over_a*w_ncdm*delta_ncdm;
@@ -9591,12 +9591,12 @@ int perturbations_derivs(double tau,
 
 
           // IF WE WANT TO USE THE ceff^2 FORMULATION
-          // // Note: This does not work. Probably because ceff2 diverges too.
-          // // First define the sound speed with respect to fluid frame of reference
+          // Note: This does not work. Probably because ceff2 diverges too.
+          // First define the sound speed with respect to fluid frame of reference
+          // Also the adiabatic sound speed
+          // ca2_ncdm = w_ncdm/3.0/(1.0+w_ncdm)*(5.0-pseudo_p_ncdm/p_ncdm_bg);
           // ceff2_ncdm = (k2*delta_p_ncdm_bltz[n_ncdm]/rho_ncdm_bg+3*a_prime_over_a*ca2_ncdm*(1+w_ncdm)*theta_ncdm)/
           //            (k2*delta_ncdm+3*a_prime_over_a*(1+w_ncdm)*theta_ncdm);
-          // // Also the adiabatic sound speed
-          // ca2_ncdm = w_ncdm/3.0/(1.0+w_ncdm)*(5.0-pseudo_p_ncdm/p_ncdm_bg);
 
           // dy[pv->index_pt_delta_ncdm1+n_ncdm]  = -(1.0+w_ncdm)*(theta_ncdm + metric_continuity)
           //                                        -3.0*a_prime_over_a*(ceff2_ncdm-w_ncdm)*delta_ncdm
